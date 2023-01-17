@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+  end
+  namespace :public do
     get 'addresses　index/edit'
   end
   namespace :public do
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
     get 'orders/show'
   end
   namespace :public do
-    get 'items/index'
+  get 'items/index'
     get 'items/show'
   end
   namespace :public do
