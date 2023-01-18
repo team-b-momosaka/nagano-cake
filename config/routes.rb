@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  root "admin/homes#top"
+
       namespace :admins do
+    root to: "admin/homes#top"
       resources :items, only: [:index,:new,:create,:show,:edit,:update]
       resources :genres, only: [:index,:create,:edit,:update, :show]
       resources :customers,only: [:index,:show,:edit,:update]
@@ -18,9 +19,10 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  root "public/homes#top"
+
   get "about" => "public/homes#about"
-  namespace :public do
+  scope module: :public do
+ root to: "homes#top"
   resources :items, only: [:index, :show]
   resources :customers, only: [:show, :edit, :update ]
   patch "customers/unsbuscribe" => "customers#unsubscribe"
