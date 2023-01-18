@@ -1,9 +1,8 @@
-  <div class="offset-0 mt-4 text-center">
+  <div class="mt-4 text-center">
     <h2>新規会員登録</h2>
   </div>
-bootstrapでなぜか中央寄せがきかない件
 <div class="container-fluid mb-4">
-  <div class="row ml-5">
+  <div class="row justify-content-center">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
@@ -18,17 +17,17 @@ bootstrapでなぜか中央寄せがきかない件
               <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name",placeholder:"名",class: "form-control w-100"%>
             </span>
           </div>
-        </div>
+      </div>
 
         <div class="form-group">
             <span>フリガナ</span><br>
-             <div class="row">
+          <div class="row">
             <span class="col"><% f.label :last_name_kana,"セイ" %>
-              <%=f.text_field :last_name_kana, autofocus: true,autocomplete:  "family-name",placeholder:"(セイ)",class: "form-control w-100" %>
+              <%=f.text_field :last_name_kana, autofocus: true,autocomplete:  "family-name",placeholder:"セイ",class: "form-control w-100" %>
             </span>
             <span class="col">
               <% f.label :first_name_kana,"メイ" %>
-              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "given-name",placeholder:"(メイ)",class: "form-control w-100" %>
+              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "given-name",placeholder:"メイ",class: "form-control w-100" %>
             </span>
           </div>
         </div>
@@ -44,11 +43,11 @@ bootstrapでなぜか中央寄せがきかない件
         </div>
 
         <div class="form-group">
-          <span>郵便番号</span><br>
-          <span>
-            <% f.label :postal_code,"郵便番号" %>
-            <%= f.text_field :pastal_code, autofocus: true, placeholder:"00000000",class: "form-control w-100" %>
-          </span>
+            <span>郵便番号</span><br>
+            <span>
+              <% f.label :postal_code,"郵便番号" %>
+              <%= f.text_field :pastal_code, autofocus: true, placeholder:"00000000",class: "form-control w-100" %>
+            </span>
         </div>
 
         <div class="form-group sm">
@@ -66,7 +65,7 @@ bootstrapでなぜか中央寄せがきかない件
         </div>
 
         <div class="form-group">
-          <% f.label :password %>
+           <% f.label :password %>
           <% if @minimum_password_length %>
           <span>パスワード</span></span><br>
           <span>
@@ -76,26 +75,25 @@ bootstrapでなぜか中央寄せがきかない件
         <div class="form-group">
           <span>パスワード(確認用)</span><br>
           <span><% f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"再度入力",class: "form-control w-100" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"再度入力",class: "form-control w-100" %>
           </span>
         </div>
         <% end %>
 
 
         <div class="actions">
-
           <%= f.submit "会員登録", class: "btn btn-success" %>
         </div>
       <% end %>
 
-        <div class="container">
+        <div class="container text-center mt-4">
           <div>
-            <b class="bold">既に登録済みの方</b>
+            <b class="font-weihgt-bold">既に登録済みの方</b>
             <br>
-          <%= link_to new_customer_session_path do %>
-          <i>こちら</i>
-          <% end %>からログインしてください
+            <%= link_to new_customer_session_path do %>
+              <i>こちら</i>
+            <% end %>からログインしてください
           </div>
         </div>
-  </div>
+    </div>
 </div>
