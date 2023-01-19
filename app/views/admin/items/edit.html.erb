@@ -1,2 +1,18 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h1>商品編集</h1>
+<table class="new-item-table">
+  <tbody>
+    <th>商品画像</th>
+    <td><%= f.attachment_field :image %></td>
+    <th>商品名</th>
+    <td><%= f.text_field :item_name, class: "form-control" %></td>
+    <th>商品説明</th>
+    <td><%= f.text_area :item_text, class: "form-control" %></td>
+    <th>ジャンル</th>
+    <td>ジャンル</td>
+    <th>税抜価格</th>
+    <td>税抜価格</td>
+    <th>販売ステータス</th>
+    <td>ステータス</td>
+  </tbody>
+  <%= f.submit "変更を保存" %>
+</table>

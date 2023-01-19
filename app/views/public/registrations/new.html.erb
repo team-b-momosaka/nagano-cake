@@ -1,29 +1,99 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="mt-4 text-center">
+    <h2>新規会員登録</h2>
   </div>
+<div class="container-fluid mb-4">
+  <div class="row justify-content-center">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="form-group">
+        <span>名前</span><br>
+          <div class="row">
+            <span class="col"><% f.label :last_name,"姓" %>
+              <%=f.text_field :last_name, autofocus: true,autocomplete:  "family-name", placeholder:"姓",class: "form-control w-100"%>
+            </span>
+            <span class="col"><% f.label :first_name,"名" %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name",placeholder:"名",class: "form-control w-100"%>
+            </span>
+          </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <div class="form-group">
+            <span>フリガナ</span><br>
+          <div class="row">
+            <span class="col"><% f.label :last_name_kana,"セイ" %>
+              <%=f.text_field :last_name_kana, autofocus: true,autocomplete:  "family-name",placeholder:"セイ",class: "form-control w-100" %>
+            </span>
+            <span class="col">
+              <% f.label :first_name_kana,"メイ" %>
+              <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "given-name",placeholder:"メイ",class: "form-control w-100" %>
+            </span>
+          </div>
+        </div>
 
-<%= render "public/shared/links" %>
+        <div class="form-group">
+          <div>
+            <span>メールアドレス</span><br>
+            <span>
+              <% f.label :email,"メールアドレス" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"maile@address",class: "form-control w-100" %>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span>郵便番号</span><br>
+            <span>
+              <% f.label :postal_code,"郵便番号" %>
+              <%= f.text_field :pastal_code, autofocus: true, placeholder:"00000000",class: "form-control w-100" %>
+            </span>
+        </div>
+
+        <div class="form-group sm">
+          <span>住所</span><br>
+          <span><% f.label :address,"住所" %>
+            <%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神薗町0-0",class: "form-control w-100" %>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <span>携帯電話</span><br>
+        	<span><% f.label :telephone_number,"電話番号" %>
+        	  <%= f.text_field :telephone_number, autofocus: true,placeholder:"例）08032436501",class: "form-control w-100" %>
+          </span>
+        </div>
+
+        <div class="form-group">
+           <% f.label :password %>
+          <% if @minimum_password_length %>
+          <span>パスワード</span></span><br>
+          <span>
+            <%= f.password_field :password, autocomplete: "new-password",placeholder:"#@minimum_password_length 文字以上",class: "form-control w-100" %>
+          </span>
+        </div>
+        <div class="form-group">
+          <span>パスワード(確認用)</span><br>
+          <span><% f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"再度入力",class: "form-control w-100" %>
+          </span>
+        </div>
+        <% end %>
+
+
+        <div class="actions">
+          <%= f.submit "会員登録", class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+        <div class="container text-center mt-4">
+          <div>
+            <b class="font-weihgt-bold">既に登録済みの方</b>
+            <br>
+            <%= link_to new_customer_session_path do %>
+              <i>こちら</i>
+            <% end %>からログインしてください
+          </div>
+        </div>
+    </div>
+</div>
