@@ -28,6 +28,6 @@ devise_for :customers,skip: [:passwords], controllers: {
   patch "customers/unsbuscribe" => "customers#unsubscribe"
   resources :cart_items, only: [:index,:update,:show]
   resources :orders, only: [:new, :index, :show, :create]
-  resources :addoresses, only: [:index, :create, :edit, :update, :destoy]
+  resources :addresses, only: [:index, :create, :edit, :update, :destoy]
   end
 end
