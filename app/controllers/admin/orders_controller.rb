@@ -1,8 +1,6 @@
 class Admin::OrdersController < ApplicationController
-  def index
-  end
-
   def show
+    # @oreder = Order.find(params[:id])
   end
 
   def update

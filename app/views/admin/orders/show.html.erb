@@ -1,2 +1,9 @@
-<h1>Admin::Order#show</h1>
-<p>Find me in app/views/admin/order/show.html.erb</p>
+<h3>注文履歴詳細</h3>
+
+<table>
+  <tr><th>購入者</th><td><%#= @oreder.customer.last_name %></td></tr>
+  <tr><th>注文日</th><td><%#= @oreder.create_at %></td></tr>
+  <tr><th>配送先</th><td><%#= @oreder.shipping_postcode %><%#= @oreder.shipping_address %><br><%#= @oreder.shipping_name %></td></tr>
+  <tr><th>支払方法</th><td><%#= @oreder.payment_method %></td></tr>
+  <tr><th>注文ステータス</th><td><%#= @oreder.order_status %></td></tr>
+</table>
