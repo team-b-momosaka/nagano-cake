@@ -1,2 +1,14 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<p>ジャンル検索</p>
+<ul>
+  <li>ケーキ</li>
+  <li>焼き菓子</li>
+  <li>プリン</li>
+  <li>キャンディ</li>
+</ul>
+<tbody>
+  <%= @item.image %>
+  <%= @item.item_name %>
+  <%= @item.item_text %>
+  <%= @item.no_tax_price %>
+  <%= link_to "カートに入れる", cart_items_path %>
+</tbody>
