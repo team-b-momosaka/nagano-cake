@@ -35,8 +35,7 @@
           <th>単価（税込）</th>
           <th>数量</th>
           <th>小計</th>
-          <th>制作ステータス</th>
-          <th></th>
+          <th colspan="2">制作ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -47,7 +46,7 @@
             <td><%#= order_detail.item.quantity %></td>
             <td><%#= (order_detail.purchese_price)*(order_detail.item.quantity) %></td>
             <td><%#= order_detail.production_status %></td>
-            <td><%= link_to "更新", class:"btn btn-success" %></td>
+            <td><%= link_to "更新", admin_work_path, class:"btn btn-success" %></td> <!--admin_work_pathの後ろに(order.id)が必要？？-->
           </tr>
         <%# end %>
       </tbody>
