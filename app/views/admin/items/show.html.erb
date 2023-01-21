@@ -1,15 +1,33 @@
 <h1>商品詳細</h1>
 <!--<%=  %>商品画像-->
+<%= attachment_image_tag @item, :image, size:'250x250', fallback: 'no_image.jpg',size: "250x250" %>
+<table class="table">
 <tbody>
-  <th>商品名</th>
-  <td></td>
-  <th>商品説明</th>
-  <td></td>
-  <th>ジャンル</th>
-  <td></td>
-  <th>税抜価格</th>
-  <td></td>
-  <th>販売ステータス</th>
-  <td></td>
+  <tr></tr>
+  <td>商品名</td>
+  <td><%= @item.item_name %></td>
+  </tr>
+  <tr>
+  <td>商品説明</td>
+  <td><%= @item.item_text %></td>
+  </tr>
+  <tr>
+  <td>ジャンル</td>
+  <td><%= @item.genre.genre %></td>
+  </tr>
+  <tr></tr>
+  <td>税抜価格</td>
+  <td><%= @item.no_tax_price %></td>
+  </tr>
+  <tr>
+  <td>販売ステータス</td>
+  <td><% if @item.sale_status %>
+        販売中
+        <% else %>
+        販売停止中
+        <% end %>
+  </td>
+  </tr>
 </tbody>
-<%= link_to "編集する", edit_admin_path %>
+</table>
+<%= link_to "編集する", edit_admin_item_path(@item) %>
