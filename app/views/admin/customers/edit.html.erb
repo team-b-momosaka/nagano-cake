@@ -1,12 +1,13 @@
 <h1><%= (@customer.last_name + @customer.first_name) %>さんの会員情報編集</h1>
-<table class="edit_customer_table">
+<%= form_for(@customer, url: admin_customer_path(@customer)) do |f| %>
+<table class="row table">
   <tr>
     <th>会員ID</th>
     <td></td>
   </tr>
   <tr>
     <th>氏名</th>
-    <td><%= f.text_field :last_name　%><%= f.text_field :first_name%></td>
+    <td><%= f.text_field :last_name,  class:"form-control" %> <%= f.text_field :first_name,  class:"form-control" %></td>
   </tr>
   <tr>
     <th>フリガナ</th>
@@ -22,15 +23,21 @@
   </tr>
   <tr>
     <th>電話番号</th>
-    <td><%= f.text_field :phone_number %></td>
+    <td><%= f.text_field :telephone_number %></td>
   </tr>
   <tr>
-    <th>メールアドレス「</th>
+    <th>メールアドレス</th>
     <td><%= f.text_field :email %></td>
   </tr>
   <tr>
     <th>会員ステータス</th>
-    <td>status</td>
+    <td>
+      　<%= f.radio_button :is_deleted, false %>
+      　<%= f.label :is_deleted, "有効"%>
+      　<%= f.radio_button :is_deleted, true %>
+      　<%= f.label :is_deleted, "退会"%>
+    </td>
   </tr>
 </table>
 <%= f.submit "変更を保存する" ,class: "btn btn-success " %>
+<% end %>
