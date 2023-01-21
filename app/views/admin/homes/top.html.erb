@@ -1,21 +1,21 @@
-<h3>商品一覧</h3>
+<h3>注文履歴一覧</h3>
 <table class="table">
   <thead>
     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税込価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    <% @oreders.each do |oreder| %>
+      <tr>
+        <td><%= oreder.create_at %></td>
+        <td><%= oreder.customer.last_name %></td>
+        <td><%= oreder.oreder_details.quantity %></td>
+        <td><%= oreder.oreder_status %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
