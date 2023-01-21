@@ -12,6 +12,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :customers,only: [:index,:show,:edit,:update]
       resources :orders,only: [:index,:show,:update]
       resources :order_details, only: [:update]
+      resources :works, only: [:update]
      end
   # 顧客用
   # URL /customers/sign_in ...
