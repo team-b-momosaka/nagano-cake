@@ -5,5 +5,47 @@
   <tr><th>注文日</th><td><%#= @oreder.create_at %></td></tr>
   <tr><th>配送先</th><td><%#= @oreder.shipping_postcode %><%#= @oreder.shipping_address %><br><%#= @oreder.shipping_name %></td></tr>
   <tr><th>支払方法</th><td><%#= @oreder.payment_method %></td></tr>
-  <tr><th>注文ステータス</th><td><%#= @oreder.order_status %></td></tr>
+  <tr><th>注文ステータス</th><td><%#= @oreder.order_status %></td><td><%= link_to "更新", class:"btn btn-success" %></td></tr>
 </table>
+
+<div class="row">
+
+<table class="table col-sm-6">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%#= @oreder.order_details.each do |order_detail| %>
+      <tr>
+        <td><%#= order_detail.item.item_name %></td>
+        <td><%#= order_detail.purchese_price %></td>
+        <td><%#= order_detail.item.quantity %></td>
+        <td><%#= (order_detail.purchese_price)*(order_detail.item.quantity) %></td>
+        <td><%#= order_detail.production_status %></td>
+        <td><%= link_to "更新", class:"btn btn-success" %></td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+
+<table class="col-sm-2 offset-sm-1">
+  <% total, subtotal = 0, 0 %>
+  <%# @oreder.order_details.each do |order_detail| %>
+    <%# price = order_detail.purchese_price %>
+    <%# quantity = order_detail.item.quantity %>
+    <%# subtotal = price * quantity %>
+    <%# total += subtotal %>
+  <%# end %>
+  <tr><th>商品合計</th><td><%#= total %>円</td></tr>
+  <tr><th>送料</th><td><%#= order.postage %>円</td></tr>
+  <tr><th>請求金額合計</th><td><%#= order.billing_amount %>円</td></tr>
+</table>
+
+</div>
