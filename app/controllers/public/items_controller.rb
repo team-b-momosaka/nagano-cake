@@ -1,6 +1,10 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
+    #ページネーション用に書き換えた
+
+    @genres = Genre.all
+    
   end
 
   def show
