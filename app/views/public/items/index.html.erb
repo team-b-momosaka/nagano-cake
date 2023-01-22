@@ -1,15 +1,32 @@
-    <p>ジャンル検索</p>
+<div class="container">
+  <div class="row">
+
+    <div class="side col-lg-3 myborder">
+    <p class="text-center py-3 myborder-bottom">ジャンル検索</p>
   <ul>
-    <li>ケーキ</li>
-    <li>焼き菓子</li>
-    <li>プリン</li>
-    <li>キャンディ</li>
+
+  <% @genres.each do |genre| %>
+    <li><%= genre.genre %></li>
+  <% end %>
+
+
   </ul>
-  <h3>商品一覧</h3>
+   </div>
+
+
+<div class="column col-lg-9">
+  <h3>商品一覧(全<%= @items.count %>件)</h3>
   <tbody>
     <% @items.each do |item| %>
-    <td>item.image</td>
-    <td>item.item_name</td>
-    <td>item.no_tax_price</td>
+    <td><%= items.image %></td>
+    <td><%= items.item_name %></td>
+    <td><%= item.no_tax_price %></td>
     <% end %>
   </tbody>
+</div>
+
+
+
+  </div>
+  <%= paginate @items %>ページネーション実装してみた(商品が投稿されないとレイアウトの調整ができない)
+  </div>
