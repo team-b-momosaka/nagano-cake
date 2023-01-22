@@ -1,0 +1,15 @@
+    <p>ジャンル検索</p>
+  <ul>
+    <li>ケーキ</li>
+    <li>焼き菓子</li>
+    <li>プリン</li>
+    <li>キャンディ</li>
+  </ul>
+  <h3>商品一覧</h3>
+  <tbody>
+    <% @items.each do |item| %>
+    <td>item.image</td>
+    <td>item.item_name</td>
+    <td>item.no_tax_price</td>
+    <% end %>
+  </tbody>

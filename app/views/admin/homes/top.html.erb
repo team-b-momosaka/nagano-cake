@@ -1,0 +1,27 @@
+<div class="container">
+  <h3>注文履歴一覧</h3>
+  <table class="table mt-5">
+    <thead class="thead-light">
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |oreder| %>
+        <tr>
+          <td>
+            <%= link_to admin_oreder_path(oreder.id) do %>
+              <%= oreder.created_at %>
+            <% end %>
+          </td>
+          <td><%= oreder.customer.last_name %><%= oreder.customer.first_name %></td>
+          <td><%= oreder.oreder_details.sum(:quantity) %></td>
+          <td><%= oreder.oreder_status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
