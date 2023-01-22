@@ -25,8 +25,10 @@ devise_for :customers,skip: [:passwords], controllers: {
   scope module: :public do
  root to: "homes#top"
   resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update ]
-  patch "customers/unsbuscribe" => "customers#unsubscribe"
+  resources :customers, only: [:show, :edit, :update]
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  # 論理削除
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   resources :cart_items, only: [:index,:update,:show]
   resources :orders, only: [:new, :index, :show, :create]
   resources :addresses, only: [:index, :create, :edit, :update, :destoy]

@@ -7,7 +7,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col d-flex">
-      <table class="table text-left">
+
+
+
+      <table class="table">
           <tr>
             <th><h3>登録情報<h3></th><td><%= link_to "編集する", edit_customer_path, class: "btn btn-success" %></td>
           </tr>
@@ -31,16 +34,17 @@
           </tr>
       </table>
 
-          <div class="container justify-content-center">
+          <div class="col-lg-2  justify-content-center mt-5">
             <div class="col text-center">
               <h3>配送先</h3>
               <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary"%>
               </div>
-              <div class="col text-center">
+              <div class="col text-center mt-5">
                 <h3>注文履歴</h3>
               <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
             </div>
           </div>
+
     </div>
   </div>
 </div>
