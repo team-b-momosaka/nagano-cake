@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-<%= form_with model: @list, url:'/items' do |f| %>
+<%= form_with model:@items,url:admin_items_path,local:true do |f| %>
 <table class="new-item-table">
   <tbody>
     <tr>
@@ -16,8 +16,7 @@
     </tr>
     <tr>
     <th>ジャンル</th>
-    <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
-    </tr>
+    <td><%= f.collection_select :genre_id, Genre.all ,:id, :genre, include_blank: "--選択してください--" %></td>
     <tr>
     <th>税抜価格</th>
     <td><%= f.text_field :no_tax_price, class: "form-control" %></td>

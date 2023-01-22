@@ -1,4 +1,5 @@
 <h1>商品編集</h1>
+<%= form_with model:@item,url:admin_item_path,local:true do |f| %>
 <table class="new-item-table">
   <tbody>
     <th>商品画像</th>
@@ -16,3 +17,4 @@
   </tbody>
   <%= f.submit "変更を保存" %>
 </table>
+<% end %>
