@@ -1,14 +1,55 @@
-<h3>注文情報確認</h3>
+<div class="container">
+  <div class"row">
+    <h3>注文情報確認</h3>
 
-<table>
-  <tr>
-    <th>支払方法</th>
-    <td><%= @order.payment_method_i18n %></td>
-  </tr>
-  <tr>
-    <th>お届け先</th>
-    <td><%= @order.shipping_postcode %><%= @order.shipping_address %><br><%= @order.shipping_name %></td>
-  </tr>
-</table>
+  <div class="row mt-5">
 
-<div class="d-flex justify-content-center"><%= link_to ' 注文を確定する ', orders_path, method: :post, class:"btn btn-success" %></div>
+    <table class="table table-bordered col-sm-7">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% total = 0 %>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= cart_item.item.item_name %></td>
+            <td><%= (cart_item.item.no_tax_price * 1.1).floor %>%></td>    <!--税込価格を求めるメソッドを導入する-->
+            <td><%= cart_item.merchandise_quantity %></td>
+            <td><%= (cart_item.item.no_tax_price * 1.1).floor * art_item.merchandise_quantity %></td>    <!--小計を求めるメソッドを導入する-->
+            <% total += (cart_item.item.no_tax_price * 1.1).floor * art_item.merchandise_quantity %>     <!--小計メソッドを使って書き換える-->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="table table-bordered col-sm-4 offset-sm-1">
+      <thead class="thead-light">
+        <tr><th>商品合計</th><td><%= total %></td></tr>
+        <% @order.postage = 800 %>
+        <tr><th>送料</th><td><%= @order.postage %></td></tr>
+        <% @order.billing_amount = total + @order.postage %>
+        <tr><th>請求金額</th><td><%= @order.billing_amount %></td></tr>
+      </thead>
+    </table>
+    </div>
+
+
+    <table>
+      <tr style="height: 100px">
+        <th class="col-sm-3">支払方法</th>
+        <td class="col-sm-8"><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <th class="col-sm-3">お届け先</th>
+        <td class="col-sm-8">〒<%= @order.shipping_postcode + " " + @order.shipping_address %><br><%= @order.shipping_name %></td>
+      </tr>
+    </table>
+
+    <div class="d-flex justify-content-center"><%= link_to ' 注文を確定する ', orders_path, method: :post, class:"btn btn-success" %></div>
+
+  </div>
+</div>

@@ -5,6 +5,8 @@ class Public::OrdersController < ApplicationController
 
   def comfirm
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+
     if params[:order][:select_address] == "0"
       @order.shipping_postcode = current_customer.postal_code
       @order.shipping_address = current_customer.address
@@ -21,7 +23,10 @@ class Public::OrdersController < ApplicationController
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_name = params[:order][:shipping_name]
     end
+    
     #binding.pry ←デバック用
+    
+    @cart_items = current_customer.cart_items.all
   end
 
   def create
