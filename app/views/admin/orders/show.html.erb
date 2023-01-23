@@ -3,7 +3,6 @@
 
   <div class="row mt-5">
     <table class="table table-borderless col-sm-10">
-    <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
       <tr>
         <th class="col-sm-2">購入者</th>
         <td>
@@ -26,9 +25,13 @@
       </tr>
       <tr>
         <th class="col-sm-2 align-middle">注文ステータス</th>
-        <td class="form-inline"><%= f.select:order_status, Order.order_statuses_i18n.invert, {}, class:"form-control col-sm-3" %><%= f.submit "更新", class:"btn btn-success ml-4" %></td>
+        <td class="form-inline">
+          <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+            <%= f.select:order_status, Order.order_statuses_i18n.invert, {}, class:"form-control" %>
+            <%= f.submit "更新", class:"btn btn-success ml-4" %>
+          <% end %>
+        </td>
       </tr>
-    <% end %>
     </table>
   </div>
 
