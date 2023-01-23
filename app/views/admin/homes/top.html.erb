@@ -10,16 +10,16 @@
       </tr>
     </thead>
     <tbody>
-      <% @orders.each do |oreder| %>
+      <% @orders.each do |order| %>
         <tr>
           <td>
-            <%= link_to admin_oreder_path(oreder.id) do %>
-              <%= oreder.created_at %>
+            <%= link_to admin_order_path(order.id) do %>
+              <%= l order.created_at %>
             <% end %>
           </td>
-          <td><%= oreder.customer.last_name %><%= oreder.customer.first_name %></td>
-          <td><%= oreder.oreder_details.sum(:quantity) %></td>
-          <td><%= oreder.oreder_status %></td>
+          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+          <td><%= order.order_details.sum(:quantity) %></td>
+          <td><%= order.order_status_i18n %></td>
         </tr>
       <% end %>
     </tbody>
