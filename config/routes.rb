@@ -30,11 +30,12 @@ get "about" => "public/homes#about"
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     # 論理削除
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    resources :cart_items, only: [:index,:update,:show]
+    resources :cart_items, only: [:index,:update,:show,:create,:destroy]
+    delete '/cart_items' => 'cart_items#destroy_all'
     post '/orders/comfirm' => 'orders#comfirm'
     get '/orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :index, :show, :create]
-    resources :addresses, only: [:index, :create, :edit, :update, :destoy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
 end

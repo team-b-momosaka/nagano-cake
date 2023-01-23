@@ -22,6 +22,11 @@
   height: auto;
 }
 
+.cartItem_imageSize {
+  width: 140px;
+  height: auto;
+}
+
 .text-tax {
   font-size: 15px;
 }

@@ -31,7 +31,7 @@
      <div class="container text-center">
 
           <%= form_with model: @cart_item do |f| %>
-            <%= f.number_field :merchandise_quantity, min:1, placeholder: "個数選択" %><span>個</span>
+            <%= f.number_field :merchandise_quantity, min:1, placeholder: "個数選択",:value => 1 %><span>個</span>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit "カートに入れる", class: "btn btn-outline-primary" %>
       　　<% end %>
