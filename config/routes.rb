@@ -31,9 +31,9 @@ get "about" => "public/homes#about"
     # 論理削除
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :cart_items, only: [:index,:update,:show]
-    resources :orders, only: [:new, :index, :show, :create]
     post '/orders/comfirm' => 'orders#comfirm'
     get '/orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :index, :show, :create]
     resources :addresses, only: [:index, :create, :edit, :update, :destoy]
   end
 
