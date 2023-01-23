@@ -1,5 +1,6 @@
 * {
   list-style: none;
+  text-decoration: none
 
 }
 
@@ -9,4 +10,45 @@
 
 .myborder-bottom {
   border-bottom: 1px solid #000;
+}
+
+.itemImage  {
+  width: 240px;
+  height: auto;
+}
+
+.itemImageShow {
+  width: 300px;
+  height: auto;
+}
+
+.text-tax {
+  font-size: 15px;
+}
+.tax-font {
+  font-size: 2.2em;
+}
+
+.pagination {
+  justify-content: center;
+  text-decoration: none
+
+}
+
+.pagination a {
+    color: #868686;
+    padding: 0 1em;
+}
+.pagination a:hover {
+  color: #000;
+}
+
+.pagination span {
+  padding: 0 1em;
+  background: #dfd;
+  border-radius: 20px;
+}
+
+.pagination .next {
+  padding: 0;
 }

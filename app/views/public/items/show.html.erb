@@ -1,14 +1,47 @@
-<p>ジャンル検索</p>
-<ul>
-  <li>ケーキ</li>
-  <li>焼き菓子</li>
-  <li>プリン</li>
-  <li>キャンディ</li>
-</ul>
-<tbody>
-  <%= @item.image %>
-  <%= @item.item_name %>
-  <%= @item.item_text %>
-  <%= @item.no_tax_price %>
-  <%= link_to "カートに入れる", cart_items_path %>
-</tbody>
+<div class="container-fluied">
+  <div class="row">
+    <div class="side col-lg-2 myborder">
+      <%= render "genre", genres: @genres %>
+     </div>
+
+
+<div class="column col-lg-9">
+
+<div class="d-flex my-box-light flex-wrap mb-2">
+
+<div class="row pr-3 pb-3 d-flex">
+    <div class="col mx-5">
+      <p><%= image_tag @item.image,class: "itemImageShow" %></p>
+    </div>
+<div class="col flex-row ">
+  <div>
+      <h2><%= @item.item_name %></h2>
+  </div>
+  <div class="align-items-center">
+      <p><%= @item.item_text %></p>
+  </div>
+  <div class="align-items-end">
+      <strong class="tax-font red-border px-3 ml-auto">&yen;<%= @item.add_tax_sales_price.to_s(:dalimited) %><span class="text-tax">&nbsp;(税込み)</span></strong>
+  </div>
+</div>
+</div>
+
+
+</div>
+     <div class="container text-center">
+
+          <%= form_with model: @cart_item do |f| %>
+            <%= f.number_field :merchandise_quantity, min:1, placeholder: "個数選択" %><span>個</span>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.submit "カートに入れる", class: "btn btn-outline-primary" %>
+      　　<% end %>
+
+
+
+      </div>
+</div>
+
+
+
+  </div>
+</div>

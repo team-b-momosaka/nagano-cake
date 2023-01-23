@@ -1,32 +1,25 @@
-<div class="container">
+<div class="container-fluied">
   <div class="row">
+    <div class="side col-lg-2 myborder">
+      <%= render "genre", genres: @genres %>
+    </div>
 
-    <div class="side col-lg-3 myborder">
-    <p class="text-center py-3 myborder-bottom">ジャンル検索</p>
-  <ul>
+  <div class="column col-lg-9">
+    <h3>商品一覧(全<%= @items.count %>件)</h3>
+    <div class="d-flex my-box-light flex-wrap mb-2">
 
-  <% @genres.each do |genre| %>
-    <li><%= genre.genre %></li>
-  <% end %>
+      <% @items.each do |item| %>
+      <div class="pr-3 pb-3">
+        <%= link_to item_path(item) do %>
+          <p><%= image_tag item.image,class: "itemImage" %></p>
+          <p><%= item.item_name %></p>
+        <% end %>
+          <p>&yen;<%= item.no_tax_price %>+税</p>
+      </div>
+      <% end %>
 
-
-  </ul>
-   </div>
-
-
-<div class="column col-lg-9">
-  <h3>商品一覧(全<%= @items.count %>件)</h3>
-  <tbody>
-    <% @items.each do |item| %>
-    <td><%= items.image %></td>
-    <td><%= items.item_name %></td>
-    <td><%= item.no_tax_price %></td>
-    <% end %>
-  </tbody>
+    </div>
+       <div class="container"><%= paginate @items %></div>
+  </div>
+  </div>
 </div>
-
-
-
-  </div>
-  <%= paginate @items %>ページネーション実装してみた(商品が投稿されないとレイアウトの調整ができない)
-  </div>
