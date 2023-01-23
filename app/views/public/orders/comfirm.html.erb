@@ -18,7 +18,7 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= cart_item.item.item_name %></td>
-            <td><%= (cart_item.item.no_tax_price * 1.1).floor %>%></td>    <!--税込価格を求めるメソッドを導入する-->
+            <td><%= (cart_item.item.no_tax_price * 1.1).floor %></td>    <!--税込価格を求めるメソッドを導入する-->
             <td><%= cart_item.merchandise_quantity %></td>
             <td><%= (cart_item.item.no_tax_price * 1.1).floor * art_item.merchandise_quantity %></td>    <!--小計を求めるメソッドを導入する-->
             <% total += (cart_item.item.no_tax_price * 1.1).floor * art_item.merchandise_quantity %>     <!--小計メソッドを使って書き換える-->
@@ -49,7 +49,16 @@
       </tr>
     </table>
 
-    <div class="d-flex justify-content-center"><%= link_to ' 注文を確定する ', orders_path, method: :post, class:"btn btn-success" %></div>
-
+    <div class="d-flex justify-content-center">
+      <%= form_with model: @order, url:orders_path, method: :post do |f| %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :shipping_postcode, :value => @order.shipping_postcode %>
+        <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
+        <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
+        <%= f.hidden_field :postage, :value => @order.postage %>
+        <%= f.hidden_field :billing_amount, :value => @order.billing_amount %>
+        <%= f.submit ' 注文を確定する ', class:"btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>

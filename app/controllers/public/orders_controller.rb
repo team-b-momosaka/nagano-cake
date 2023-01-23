@@ -30,9 +30,17 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    binding.pry
+
     if @order.save
+      current_customer.cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = @order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.purchase_price = (cart_item.item.no_tax_price * 1.1).floor
+        order_detail.quantity = cart_item.merchandise_quantity
+        order_detail.save
+      end
+      current_customer.cart_items.destroy_all
       redirect_to orders_complete_path
     end
   end
@@ -42,9 +50,11 @@ class Public::OrdersController < ApplicationController
 
 
   def index
+    @orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
