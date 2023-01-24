@@ -1,23 +1,29 @@
+<div class="contaier-fulied">
+  <div class="row">
+     <div class="side col-lg-2 mx-5 myborder">
+      <%= render "public/items/genre", genres: @genres %>
+     </div>
 
-  <p class="text-center py-3 myborder-bottom">ジャンル検索</p>
-    <% @genres.each do |genre| %>
-      <li><%= genre.genre %></li>
-    <% end %>
-</div>  
-  <div class="card" style="max-width: 800px;">
-    <img class="card-img" src="/assets/PAK57_ichigonocake_TP_V.jpg">
-    <div class="card-img-overlay">
-      <p class="text-white">ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
-    </div>  
+      <div class="card" style="max-width: 800px;">
+        <img class="card-img topPage-image" src="https://thumb.photo-ac.com/87/87c86c7f3187d5430f1ab77a3d4b1817_w.jpeg">
+        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+          <p class="text-white text-center topPage-text">ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
+        </div>
+      </div>
   </div>
-  <h3>新着商品</h3>
-    <tbody>
-    <%= @items.each do |item| %>   
-      <tr>
-        <td>商品画像</td>
-        <td><%= item.item_name %></td>
-        <td><%= item.no_tax_price %></td>
-      </tr>
-    <% end %>  
-    </tbody>
-  <%= link_to "すべての商品を見る", items_path %>
+
+  <div class="container mt-3">
+    <h3>新着商品</h3>
+      <div class="row-lg-5 d-flex flex-wrap">
+        <% @items.each do |item| %>
+        <div class="col mb-3">
+          <%= image_tag item.image,class: "itemImage" %>
+          <br>
+          <p><%= item.item_name %><br>&yen;<%= item.on_tax_price %></p>
+        </div>
+      <% end %>
+      </div>
+
+<p class="text-right"><%= link_to "すべての商品を見る＞＞", items_path %></p>
+  </div>
+</div>
