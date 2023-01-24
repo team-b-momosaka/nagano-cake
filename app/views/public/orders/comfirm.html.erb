@@ -19,11 +19,11 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td class="align-baseline"><%= image_tag cart_item.item.get_image(50,50) %> <%= cart_item.item.item_name %></td>
-              <td class="align-baseline"><%= cart_item.item.add_tax_sales_price %>円</td>
+              <td class="align-baseline"><%= cart_item.item.on_tax_price %>円</td>
               <td class="align-baseline"><%= cart_item.merchandise_quantity %>個</td>
-              <td class="align-baseline"><%= cart_item.item.add_tax_sales_price * cart_item.merchandise_quantity %>円</td> <!--小計を求めるメソッドを導入する-->
+              <td class="align-baseline"><%= cart_item.item.on_tax_price * cart_item.merchandise_quantity %>円</td> <!--小計を求めるメソッドを導入する-->
             </tr>
-            <% total += cart_item.item.add_tax_sales_price * cart_item.merchandise_quantity %>
+            <% total += cart_item.item.on_tax_price * cart_item.merchandise_quantity %>
           <% end %>
         </tbody>
       </table>
