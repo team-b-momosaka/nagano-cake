@@ -4,10 +4,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
 
-  #税込み価格表示
-  def add_tax_sales_price
-    (self.no_tax_price * 1.10).round
-  end
+
 
   def get_image(width, height)
       unless image.attached?
@@ -16,4 +13,16 @@ class Item < ApplicationRecord
       end
       image.variant(resize_to_limit: [width, height]).processed
   end
+
+
+
+
+        #消費税込み
+    def on_tax_price
+      tax_rate = 1.1
+      (self.no_tax_price * tax_rate).floor
+    end
+
+
+
 end
