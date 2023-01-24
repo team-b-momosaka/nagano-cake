@@ -7,8 +7,10 @@ class CartItem < ApplicationRecord
 
 
 
- def total_price
-   no_tax_price * merchandise_quantity * 1.1
-   end
+      #小計金額
+    def small_total_price
+      (item.on_tax_price * merchandise_quantity).floor
+    end
+
 
 end
