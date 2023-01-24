@@ -57,8 +57,9 @@
               <td><%= order_detail.purchase_price %>円</td>
               <td><%= order_detail.quantity %>個</td>
               <td><%= order_detail.purchase_price * order_detail.quantity %>円</td>
-              <%= form_with model: @order_detail, url: admin_work_path, method: :patch do |f| %> <!--admin_work_pathの後ろに(order_detail.id)が必要？？-->
-                <td><%= f.select:production_status, OrderDetail.production_statuses_i18n.invert, {}, class:"form-control" %></td>
+              <%= form_with model: @order_detail, url: admin_work_path(order_detail.id), method: :patch do |f| %>
+                <td><%= order_detail.production_status_i18n %>
+                  <%= f.select :production_status, OrderDetail.production_statuses_i18n.invert, {}, class:"form-control" %></td>
                 <td><%= f.submit '更新', class:"btn btn-success" %></td>
                 <% total += order_detail.purchase_price * order_detail.quantity %>
               <% end %>
