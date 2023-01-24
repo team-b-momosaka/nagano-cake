@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
-        order_detail.purchase_price = (cart_item.item.no_tax_price * 1.1).floor
+        order_detail.purchase_price = cart_item.item.add_tax_sales_price
         order_detail.quantity = cart_item.merchandise_quantity
         order_detail.save
       end
