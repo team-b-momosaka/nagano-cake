@@ -1,9 +1,8 @@
-<div class="container">
+<div class="container-fluid px-5">
   <div class"row">
     <h3>注文情報確認</h3>
 
-  <div class="row mt-5">
-
+  <div class="row mt-3">
     <table class="table table-bordered col-sm-7">
       <thead class="thead-light">
         <tr>
@@ -26,30 +25,31 @@
         <% end %>
       </tbody>
     </table>
-    <table class="table table-bordered col-sm-4 offset-sm-1">
+    <table class="table table-bordered col-sm-3 offset-sm-1">
       <thead class="thead-light">
-        <tr><th>商品合計</th><td><%= total %></td></tr>
+        <tr><th class="col-sm-6">商品合計</th><td><%= total %></td></tr>
         <% @order.postage = 800 %>
-        <tr><th>送料</th><td><%= @order.postage %></td></tr>
+        <tr><th class="col-sm-6">送料</th><td><%= @order.postage %></td></tr>
         <% @order.billing_amount = total + @order.postage %>
-        <tr><th>請求金額</th><td><%= @order.billing_amount %></td></tr>
+        <tr><th class="col-sm-6">請求金額</th><td><%= @order.billing_amount %></td></tr>
       </thead>
     </table>
-    </div>
+  </div>
 
-
-    <table>
-      <tr style="height: 100px">
-        <th class="col-sm-3">支払方法</th>
-        <td class="col-sm-8"><%= @order.payment_method_i18n %></td>
+  <div class="row mt-3">
+    <table class="table table-borderless col-sm-8">
+      <tr style="height: 50px">
+        <th class="col-sm-2">支払方法</th>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
-        <th class="col-sm-3">お届け先</th>
-        <td class="col-sm-8">〒<%= @order.shipping_postcode + " " + @order.shipping_address %><br><%= @order.shipping_name %></td>
+        <th class="col-sm-2">お届け先</th>
+        <td>〒<%= @order.shipping_postcode + " " + @order.shipping_address %><br><%= @order.shipping_name %></td>
       </tr>
     </table>
+  </div>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-3">
       <%= form_with model: @order, url:orders_path, method: :post do |f| %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
         <%= f.hidden_field :shipping_postcode, :value => @order.shipping_postcode %>
