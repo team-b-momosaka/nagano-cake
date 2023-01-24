@@ -1,8 +1,12 @@
 class Admin::WorksController < ApplicationController
   def update
-    order_detail = OrderDetail.find(params[:id])
-    order_detail.update(order_detail_params)
-    redirect_to admin_order_path(order.id) #恐らく修正ポイント？
+    order = Order.find(params[:id])
+    order_detail = OrderDetail.find_by(order_id: order.id)
+    if order_detail.update(order_detail_params)
+     redirect_to admin_order_path(order.id) #恐らく修正ポイント？
+    else
+     render "index"
+    end
   end
 
   private
