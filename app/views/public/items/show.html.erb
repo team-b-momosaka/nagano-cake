@@ -21,7 +21,7 @@
       <p><%= @item.item_text %></p>
   </div>
   <div class="align-items-end">
-      <strong class="tax-font red-border px-3 ml-auto">&yen;<%= @item.add_tax_sales_price.to_s(:dalimited) %><span class="text-tax">&nbsp;(税込み)</span></strong>
+      <strong class="tax-font red-border px-3 ml-auto">&yen;<%= @item.on_tax_price %><span class="text-tax">&nbsp;(税込み)</span></strong>
   </div>
 </div>
 </div>
@@ -31,13 +31,10 @@
      <div class="container text-center">
 
           <%= form_with model: @cart_item do |f| %>
-            <%= f.number_field :merchandise_quantity, min:1, placeholder: "個数選択",:value => 1 %><span>個</span>
+            <%= f.select :merchandise_quantity, *[1..10], class: "form-select" %><span>個</span>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit "カートに入れる", class: "btn btn-outline-primary" %>
       　　<% end %>
-
-
-
       </div>
 </div>
 
