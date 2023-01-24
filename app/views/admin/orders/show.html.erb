@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid px-5">
   <h3>注文履歴詳細</h3>
 
-  <div class="row mt-5">
+  <div class="row mt-3">
     <table class="table table-borderless col-sm-10">
     <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
       <tr>
@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <th class="col-sm-2">注文日</th>
-        <td><%= l @order.created_at %></td>
+        <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
         <th class="col-sm-2">配送先</th>
