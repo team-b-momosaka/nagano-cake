@@ -4,6 +4,22 @@
 
 }
 
+/*rootpage*/
+.topPage-image {
+  filter: blur(1px) opacity(85%) ;
+}
+
+
+.topPage-text {
+  background: rgba(50,40,60,0.4);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px white, 0 0 1em black, 0 0 0.2em white;
+}
+
+
+/**/
+
+
 .myborder {
   border: 2px solid #000;
 }
