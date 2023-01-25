@@ -3,10 +3,10 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row d-flex justify-content-center">
-      <table class="table col col-lg-5">
+  <div class="row d-flex d-wrap justify-content-center">
+      <table class="table col col-lg-7">
           <tr>
-            <th><h3>登録情報<h3></th><td><%= link_to "編集する", edit_customer_path, class: "btn btn-success" %></td>
+            <th class="col-4"><h3>登録情報<h3></th><td class="col-5"><%= link_to "編集する", edit_customer_path, class: "btn btn-success" %></td>
           </tr>
           <tr>
             <th>氏名</th><td><%= @last_name %>&nbsp;<%= @first_name %></td>
@@ -31,12 +31,12 @@
   </div>
 </div>
 
-          <div class="container mb-5 d-flex">
+          <div class="container my-3 d-flex">
             <div class="col-lg-6 text-center">
               <h3>配送先</h3>
                 <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary"%>
               </div>
-              <div class="col-lg-4 text-center">
+              <div class="col-lg-2 text-center">
                 <h3>注文履歴</h3>
               <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
             </div>
