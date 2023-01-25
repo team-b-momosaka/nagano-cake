@@ -1,6 +1,8 @@
-<div class="container-fluid px-5">
+<div class="container-fluid px-5 mt-5">
   <div class="row">
-    <h3>注文情報入力</h3>
+    <div>
+      <h2>注文情報入力</h2>
+    </div>
   </div>
   <div class="row flex-column">
     <%= form_with model: @order, url: orders_comfirm_path, method: :post do |f| %>
