@@ -1,12 +1,12 @@
-<div class="container-fluied">
+<div class="container-fluied mt-5">
   <div class="row">
     <div class="side col-lg-2 mx-5 myborder">
       <%= render "genre", genres: @genres %>
     </div>
 
   <div class="column col-lg-9">
-    <h3>商品一覧(全<%= @item.count %>件)</h3>
-    <div class="d-flex my-box-light flex-wrap mb-2">
+    <h2>商品一覧(全<%= @item.count %>件)</h3>
+    <div class="d-flex my-box-light flex-wrap mt-4 mb-2">
 
       <% @items.each do |item| %>
       <div class="pr-3 pb-3">
