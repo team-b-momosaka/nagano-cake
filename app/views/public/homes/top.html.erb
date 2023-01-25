@@ -17,7 +17,9 @@
       <div class="row-lg-5 d-flex flex-wrap">
         <% @items.each do |item| %>
         <div class="col mb-3">
-          <%= image_tag item.image,class: "itemImage" %>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image,class: "itemImage" %>
+          <% end %>
           <br>
           <p><%= item.item_name %><br>&yen;<%= item.on_tax_price %></p>
         </div>
