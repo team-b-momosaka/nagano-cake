@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_current_customer, only:[:edit,:update]
+
   def show
     @last_name = current_customer.last_name
     @first_name = current_customer.first_name
@@ -26,16 +29,15 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
   end
-  
-   def withdrawal
+
+  def withdrawal
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true) #falseからtrueに制約を変える
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-  
-  
+
   def destroy
   end
 
@@ -45,4 +47,10 @@ class Public::CustomersController < ApplicationController
     params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email)
   end
 
+  def ensure_current_customer
+    customer = Customer.find(params[:id])
+    unless current_customer.id == customer.id
+      redirect_to current_customer
+    end
+  end
 end

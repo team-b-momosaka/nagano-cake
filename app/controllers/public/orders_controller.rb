@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_cart_item_count, only:[:new,:comfirm,:create]
+
   def new
     @order = Order.new
   end
@@ -48,7 +51,6 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
-
   def index
     @orders = Order.all
   end
@@ -63,4 +65,9 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :shipping_postcode, :shipping_address, :shipping_name, :customer_id, :postage, :billing_amount)
   end
 
+  def ensure_cart_item_count
+    if current_customer.cart_items.all.count == 0
+      redirect_to items_path
+    end
+  end
 end
