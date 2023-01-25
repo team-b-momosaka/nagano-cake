@@ -23,22 +23,22 @@
       </thead>
       <tbody>
       <% @addresses.each do |address| %>
+        <% if address.customer == current_customer %>
         <tr>
           <td class="align-middle">
             <%= address.postcode %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= address.address %>
           </td>
           <td class="align-middle">
             <%= address.name %>
           </td>
-          <% if address.customer == current_customer %>
-            <td>
-              <%= link_to "編集する", edit_address_path(current_customer), class:"btn btn-success" %>
-              <%= link_to "削除する", address_path(address) , method: :delete, "data-confirm" => "本当に消しますか？" ,class: "btn btn-danger" %>
-            </td>
-          <% end %>  
+          <td>
+            <%= link_to "編集する", edit_address_path(current_customer), class:"btn btn-success" %>
+            <%= link_to "削除する", address_path(address) , method: :delete, "data-confirm" => "本当に消しますか？" ,class: "btn btn-danger" %>
+          </td>
+        <% end %>  
         </tr>
       <% end %>  
       </tbody>
