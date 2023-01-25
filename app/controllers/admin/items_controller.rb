@@ -9,9 +9,10 @@ class Admin::ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
-    item.save
-    if redirect_to admin_item_path(item)
+    if item.save
+     redirect_to admin_item_path(item)
     else
+      @items = Item.new
       render :new
     end
   end
@@ -27,8 +28,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_item_path(@item)
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item)
+    else
+      @item = Item.find(params[:id])
+      render :edit
+    end
   end
 
 
