@@ -1,8 +1,11 @@
-<h1><%= (@customer.last_name + @customer.first_name) %>さんの会員詳細</h1>
+<div class="container">
+<div class="row mt-5">
+<h2 class="mb-5"><%= (@customer.last_name + @customer.first_name) %>さんの会員詳細</h2>
+
 <table class="row table">
   <tr>
     <th>会員ID</th>
-    <td></td>
+    <td><%= @customer.id %></td>
   </tr>
   <tr>
     <th>氏名</th>
@@ -38,5 +41,8 @@
     </td>
   </tr>
 </table>
-<%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-primary" %>
-<%= link_to "注文履歴一覧を見る",admin_root_path, class: "btn btn-success" %>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success mr-5" %>
+<%= link_to "注文履歴一覧を見る",admin_root_path, class: "btn btn-primary" %>
+</div>
+</div>

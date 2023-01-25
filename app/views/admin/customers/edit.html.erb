@@ -1,9 +1,15 @@
-<h1><%= (@customer.last_name + @customer.first_name) %>さんの会員情報編集</h1>
+<div class="container">
+<div class="row mt-5">
+<h2><%= (@customer.last_name + @customer.first_name) %>さんの会員情報編集</h2>
+</div>
+</div>
 <%= form_for(@customer, url: admin_customer_path(@customer)) do |f| %>
+<div class="container">
+  <div class="row">
 <table class="row table">
   <tr>
     <th>会員ID</th>
-    <td></td>
+    <td><%= @customer.id %></td>
   </tr>
   <tr>
     <th>氏名</th>
@@ -41,3 +47,5 @@
 </table>
 <%= f.submit "変更を保存する" ,class: "btn btn-success " %>
 <% end %>
+</div>
+</div>

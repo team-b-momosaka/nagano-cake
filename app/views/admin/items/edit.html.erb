@@ -1,6 +1,13 @@
-<h1>商品編集</h1>
+<div class="container">
+  <div class="row mt-5">
+<h2 class=>商品編集</h2>
+</div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
 <%= form_with model:@item,url:admin_item_path,local:true do |f| %>
-<table class="new-item-table">
+
+<table>
   <tbody>
     <tr>
     <th>商品画像</th>
@@ -28,5 +35,9 @@
     </tr>
   </tbody>
 </table>
-<%= f.submit "変更を保存" %>
+<div class="text-center">
+<%= f.submit "変更を保存",class: "btn btn-primary text-right" %>
+</div>
 <% end %>
+</div>
+</div>
