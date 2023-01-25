@@ -8,32 +8,26 @@ class Public::OrdersController < ApplicationController
 
   def comfirm
     @order = Order.new(order_params)
-
     if params[:order][:select_address] == "0"
       @order.shipping_postcode = current_customer.postal_code
       @order.shipping_address = current_customer.address
       @order.shipping_name = current_customer.last_name + current_customer.first_name
-
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.shipping_postcode = @address.postcode
       @order.shipping_address = @address.address
       @order.shipping_name = @address.name
-
     elsif params[:order][:select_address] == "2"
       @order.shipping_postcode = params[:order][:shipping_postcode]
       @order.shipping_address = params[:order][:shipping_address]
       @order.shipping_name = params[:order][:shipping_name]
     end
-
     #binding.pry ←デバック用
-
     @cart_items = current_customer.cart_items.all
   end
 
   def create
     @order = Order.new(order_params)
-
     if @order.save
       current_customer.cart_items.each do |cart_item|
         order_detail = OrderDetail.new
@@ -52,7 +46,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @customer = current_customer
+    @orders = @customer.orders
   end
 
   def show
