@@ -1,6 +1,14 @@
-<h1>商品新規登録</h1>
+<div class ="container">
+<div class="row">
+  <div class="col-md-5 mt-5">
+    <h2>商品新規登録</h2>
+  </div>
+</div>
+</div>
+<div class="container mt-5">
+<div class="row justify-content-center">
 <%= form_with model:@items,url:admin_items_path,local:true do |f| %>
-<table class="new-item-table">
+<table>
   <tbody>
     <tr>
     <th>商品画像</th>
@@ -27,7 +35,9 @@
     </tr>
   </tbody>
   </table>
-  <%= f.submit "新規登録" %>
+  <%= f.submit "新規登録" , class: "btn btn-primary pull-right" %>
   <% end %>
+  </div>
+  </div>
 
 
