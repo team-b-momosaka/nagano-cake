@@ -5,8 +5,12 @@
     </div>
 
   <div class="column col-lg-9">
-    <h2>商品一覧(全<%= @item.count %>件)</h3>
+    <h2><%= @index %>一覧(全<%= @items_all %>件)</h3>
     <div class="d-flex my-box-light flex-wrap mt-4 mb-2">
+
+
+
+
 
       <% @items.each do |item| %>
       <div class="pr-3 pb-3">
@@ -17,8 +21,16 @@
           <p>&yen;<%= item.on_tax_price %></p>
       </div>
       <% end %>
+
+
+
+
+
+
     </div>
        <div class="container"><%= paginate @items %></div>
   </div>
   </div>
 </div>
+
+
