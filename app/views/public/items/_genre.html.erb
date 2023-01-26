@@ -1,5 +1,6 @@
 
   <p class="text-center py-3 myborder-bottom">ジャンル一覧</p>
   <% genres.each do |genre| %>
-    <li><%= genre.genre %></li>
+    <li><%= link_to genre.genre,items_path(genre_id: genre.id)%></li>
+    <!--アイテムのインデックスに移動する際に()をつけてparamsを送っている。params[:genre_id]-->
   <% end %>
