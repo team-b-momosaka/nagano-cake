@@ -24,7 +24,7 @@
     <td><%= item.no_tax_price %></td>
     <td><%= item.genre.genre %></td>
     <td><% if item.sale_status %>
-        販売中
+        <span class="text-success">販売中</span>
         <% else %>
         販売停止中
         <% end %>

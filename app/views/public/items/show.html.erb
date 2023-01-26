@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-
+<% if @item.sale_status == true %>
        <div class="container text-center">
             <%= form_with model: @cart_item do |f| %>
               <%= f.select :merchandise_quantity, *[1..10], class: "form-select" %><span>個</span>
@@ -34,6 +34,9 @@
               <%= f.submit "カートに入れる", class: "btn btn-outline-primary" %>
         　　<% end %>
         </div>
+        <% else %>
+        <h3 class ="text-center">売り切れ</h3>
+        <% end %>
      </div>
   </div>
 </div>
